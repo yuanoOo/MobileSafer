@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.itheima.mobilesafe74"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- android:versionCode 本地应用版本号1,版本号是2,有必要提示用户更新 -->
+    <!--
+         android:versionName="1.0"  
+			2.1.1:
+			最后的一位:代表修复原有版本的bug
+			倒数第二位:更新部分功能
+			第一位:项目重大更新(代码重构,大部分功能添加,界面整体修改)
+    -->
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+     <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.itheima.mobilesafe74" />
+     
+    <!-- android:theme="@android:style/Theme.Light.NoTitleBar" -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- //获取准确GPS坐标的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> <!-- //允许模拟器模拟位置坐标的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- //获取粗略坐标的权限(网络定位时使用) -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 在窗体上挂在view的权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 去电广播监听的权限 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <!-- 拦截电话需要用到的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <!-- 杀死后台进程的权限 -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+    <!-- <uses-permission android:name="android.permission.DELETE_CACHE_FILES"/> -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <uses-library android:name="android.test.runner" />
+        <activity
+            android:name="cn.jxau.mobilesafer.activity.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="cn.jxau.mobilesafer.activity.HomeActivity">
+        	 <intent-filter>
+                <action android:name="android.intent.action.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="cn.jxau.mobilesafer.activity.SettingActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.TestActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.SetupOverActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.Setup1Activity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.Setup2Activity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.Setup3Activity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.Setup4Activity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.ContactListActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.AToolActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.QueryAddressActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.ToastLocationActivity" 
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name="cn.jxau.mobilesafer.activity.BlackNumberActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.AppManagerActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.ProcessManagerActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.ProcessSettingActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.CommonNumberQueryActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.AppLockActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.AnitVirusActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.ClearCacheActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.BaseClearCacheActivity" />
+        <activity android:name="cn.jxau.mobilesafer.activity.SDClearCacheActivity" />
+        
+        <!-- 拦截界面要在一个单独的任务栈中 -->
+        <!-- 不需要去显示手机卫士的图标,true不要显示最近的图标,false显示最近开启应用的图标 -->
+        <activity android:name="cn.jxau.mobilesafer.activity.EnterPsdActivity" 
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"/>
+
+        <receiver android:name="cn.jxau.mobilesafer.receiver.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="cn.jxau.mobilesafer.receiver.SmsReceiver" >
+            <intent-filter>
+                <!-- 为了去关联系统短信的广播对应过滤条件,先将编译版本改为4.1.2 -->
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="cn.jxau.mobilesafer.receiver.KillProcessReceiver" >
+            <intent-filter>
+                <!-- 为了去关联系统短信的广播对应过滤条件,先将编译版本改为4.1.2 -->
+                <action android:name="android.intent.action.KILL_BACKGROUND_PROCESS" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name="cn.jxau.mobilesafer.receiver.MyAppWidgetProvider" >
+		    <intent-filter>
+		        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+		    </intent-filter>
+		    <meta-data android:name="android.appwidget.provider"
+		               android:resource="@xml/process_widget_provider" />
+		</receiver>
+
+        <service android:name="cn.jxau.mobilesafer.service.LocationService" />
+        <service android:name="cn.jxau.mobilesafer.service.AddressService" />
+        <service android:name="cn.jxau.mobilesafer.service.BlackNumberService" />
+        <service android:name="cn.jxau.mobilesafer.service.LockScreenService" />
+        <service android:name="cn.jxau.mobilesafer.service.UpdateWidgetService" />
+        <service android:name="cn.jxau.mobilesafer.service.WatchDogService" />
+    </application>
+
+</manifest>

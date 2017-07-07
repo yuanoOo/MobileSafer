@@ -1,2 +1,2 @@
 # MobileSafer
-- A practical app for android about safe
+- A practice app for android about safe
